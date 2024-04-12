@@ -14,4 +14,20 @@ body.dark{
 
 body{
   font-family: 'SF Pro Display', sans-serif;
+  /* transition: background-color 0.5s, left 0.5s; */
+  transition-delay: 0s, 1s;
+  transition-timing-function: ease-in, ease-in-out;
+}
+
+.example {
+  transition: all 1s;
+}
+
+.example.preEnter,
+.example.exiting {
+  opacity: 0;
+}
+
+.example.exited {
+  display: none;
 }

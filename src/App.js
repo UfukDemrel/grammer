@@ -3,18 +3,18 @@
   import Unit1 from "./components/units/unit1";
   import DetailsPage from "./details";
   import Header from "./components/header";
-  import Time from "./components/time";
+  // import Time from "./components/time";
   import "./App.css";
 
   function App() {
     return (
-      <div className="container">
+      <div className="container transation">
         <Router> 
           <Header />
-          <Time />
+          {/* <Time /> */}
           <Routes>
             <Route path="/" element={<Unit1 />} />
-            <Route path="/details/:id" element={<DetailsPage />} />
+            <Route path="/details/:lessonId" element={<DetailsPage />} />
           </Routes>
         </Router>
       </div>

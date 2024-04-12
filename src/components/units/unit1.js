@@ -1,70 +1,62 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useTransition } from 'react-transition-state';
 
-function Unit1() {
-    const [unitOne, setUnitOne] = useState(false);
+const Unit1 = () => {
+  const [units, setUnits] = useState([]);
+  const [blocks, setBlocks] = useState(false);
+  const [selectedUnit] = useState(null);
+  const [state, toggle] = useTransition({ timeout: 500, preEnter: true });
 
-    const handleToggle = () => {
-      setUnitOne((prevState) => !prevState);
+  const handleBlocks = () => {
+    setBlocks(prevBlocks => !prevBlocks);
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://raw.githubusercontent.com/ufukdemrel/grammerdata/main/data.json');
+        const data = await response.json();
+        setUnits(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
     };
 
-    const data = [
-      { 
-          "id": "1",
-          "title": "Unit 1",
-          "svg0": "https://img.icons8.com/sf-black-filled/40/228BE6/rating-circled.png",
-          "svg1": "https://img.icons8.com/sf-black-filled/40/40C057/rating-circled.png",
-          "svg2": "https://img.icons8.com/color/40/so-so.png",
-          "content": "Basic greetings & What's your..?",
-          "description": "Build upon your basic greetings knowledge and dive into more advanced phrases. Practice asking about well-being and expressing feelings.",
-          "info": [
-              {
-                  "id": "1",
-                  "title": "Lesson 1",
-                  "content": "Warmup: 2 truths and a lie."
-              }
-          ]
-      }
-  ];
-  
+    fetchData();
+  }, []);
+
   return (
-    <>
-    {data && data.map(item => (    
-      <div id={item.id} key={item.id} onClick={handleToggle} className="p-2 gap-2 mt-3 cursor-pointer rounded-lg">
-        <div className="flex justify-between items-center gap-2">
-          <div>
-            <img src={item.svg0} alt="alt" />
-          </div>
-          <div className="block">
-            <div className="font-bold text-xl">{item.title}</div>
-            <div className="font-medium">{item.content}</div>
-          </div>
-          <div className="flex items-center justify-end">
-            <img src={item.svg2} alt="alt" />
-          </div>
-        </div>
-        {unitOne && (
-        <div className="p-2">
-          <div className="text-sm text-slate-700 w-11/12">
-            {item.description}
-          </div>
-          <Link to={`/details/${item.info[0].id}`}>
-            <div id={item.info[0].id} className='mb-3 mt-3 flex justify-start items-center gap-2 shadow rounded-lg hover:bg-gray-300 p-2'>
-              <img width="50" height="50" src="https://img.icons8.com/bubbles/50/people-working-together.png" alt="people-working-together"/>
+    <div>
+      {!selectedUnit && units.map(unit => (
+        <div onClick={() => toggle()} className='mb-3' key={unit.id}>
+          <div className='flex justify-between items-center mt-3' onClick={handleBlocks}>
+            <div className='flex gap-2 items-center'>
+              <img className='w-1/6' src={unit.icons.svg0} alt="Icon" />
               <div className='block'>
-                <div className='text-xs'>{item.info[0].title}</div>
-                <div className='font-semibold text-sm'>{item.info[0].content}</div>
+                <h2 className='font-semibold'>{unit.title}</h2>
+                <p className='text-sm font-medium'>{unit.content}</p>
               </div>
             </div>
-          </Link>
+            <img src={unit.icons.svg2} alt='icon'/>          
+          </div>
+          
+          {blocks && unit.lessons && unit.lessons.map(lesson => (
+            <div key={lesson.id} className={`mt-1 example ${state.status}`}>
+              <Link to={`/details/${lesson.id}`} className='flex items-center gap-2 hover:bg-gray-200 rounded-md p-1'>
+                <img className='w-1/6' src={lesson.icons} alt='icons'/>
+                <div className='block'>
+                  <div className='text-sm font-medium spa text-slate-700'>{lesson.title}</div>
+                  <p className='text-sm font-semibold'>{lesson.content}</p>
+                </div>
+              </Link>
+            </div>
+          ))}
+          <hr className='mt-1'/>
         </div>
-        )}
-      </div>
       ))}
-      <hr />
-    </>
-    
+    </div>
   );
-}
+};
 
 export default Unit1;
