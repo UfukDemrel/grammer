@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import grammer from "../images/grammer.png";
 import { Link } from "react-router-dom";
 
 function Header() {
@@ -13,7 +12,7 @@ function Header() {
     <div className="flex items-center justify-between mb-2 mt-2">
       <Link to="/">
         <div className="flex items-center gap-1">
-        <img width={35} height={35} src={grammer} alt="alt" />
+        <img width={35} height={35} src="https://cdn3d.iconscout.com/3d/premium/thumb/aave-crypto-4804713-4002421.png" alt="alt" />
         {/* <div className="font-semibold text-xl">English Lessons</div> */}
         </div>
       </Link>
