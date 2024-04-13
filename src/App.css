@@ -27,14 +27,13 @@ body.dark .shad{
   box-shadow: rgb(255, 255, 255) 0px 0px 8px;
 }
 
-body.light .svg{
+/* body.light .svg{
   fill: black;
 }
 
 body.dark .svg{
   fill: white;
-}
-
+} */
 
 .example {
   transition: all 1s;

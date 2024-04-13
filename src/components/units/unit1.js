@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTransition } from 'react-transition-state';
+import Header from '../header';
 
 const Unit1 = () => {
   const [units, setUnits] = useState([]);
@@ -30,7 +31,10 @@ const Unit1 = () => {
   }, []);
 
   return (
-    <div>
+    <div className='container'>
+    <Header/>
+    <div className='font-semibold text-2xl mb-3'>LEARN ENGLISH WITHOUT LIMITS</div>
+    <div>Search</div>
       {!selectedUnit && units.map(unit => (
         <div onClick={() => toggle()} className='mb-3 shad rounded-lg p-2 cursor-pointer' key={unit.id}>
           <div className='flex justify-between items-center' onClick={() => handleBlocks(unit.id)}>
