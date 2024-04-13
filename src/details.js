@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Header from './components/header';
 
 const DetailsPage = () => {
   const { lessonId } = useParams();
@@ -26,8 +25,7 @@ const DetailsPage = () => {
   }
 
   return (
-    <div className='container'>
-    <Header/>
+    <div>
       <h1>{lesson.states[0].text1}</h1>
       <p>{lesson.states[0].text2}</p>
     </div>

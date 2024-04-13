@@ -1,13 +1,14 @@
 import React from "react";
-import blue from "../images/blue.png";
+// import blue from "../images/blue.png";
 import red from "../images/red.png";
-import pencil from "../images/pencil.png";
+import work from "../images/work.png";
+import ios from "../images/ios.png";
 import { Link } from "react-router-dom";
 
 function Learning() {
   return (
-    <div className="bg-black">
-      <div className="flex justify-between items-center ml-3">
+    <div>
+      {/* <div className="flex justify-between items-center">
         <img
           alt="alt"
           className="rounded-md bg-white p-1 border-2 border-white"
@@ -16,23 +17,26 @@ function Learning() {
           src="https://cdn-icons-png.flaticon.com/256/5968/5968705.png"
         />
         <img width={70} height={70} className="" src={blue} alt="alt" />
-      </div>
-      <div className="w-3/5 font-black text-2xl ml-3 text-white">
+      </div> */}
+      <div className="w-3/5 font-black text-2xl">
         LEARN ENGLISH FROM ANYTHING AND ANYWHERE
       </div>
       <div className="flex justify-end items-end">
         <img width={70} height={70} className="mr-5" src={red} alt="alt" />
       </div>
-      <div className="font-medium w-2/3 mt-8 mb-2 ml-3 text-white">
+      <div className="font-medium w-2/3 mt-8 mb-2 ml-3">
         You can now improve your English everywhere, learn your grammar and
         start talking to people.
       </div>
-      <div className="flex justify-between items-start ml-3">
+      <div className="flex justify-between items-center">
+        <img  className="" src={work} alt="alt" />
+      </div>
+      <div className="flex justify-between items-center">
         <Link to="/learning">
           <div className="shadow flex items-center justify-center bg-blue-600 pl-5 pr-5 pt-3 pb-3 mt-5 rounded-full gap-3">
-            <div className="font-semibold text-sm text-white">Next</div>
+            <div className="font-semibold text-sm">Get Starded</div>
             <svg
-              fill="white"
+              className="svg"
               height="11px"
               width="11px"
               version="1.1"
@@ -54,7 +58,7 @@ function Learning() {
           </div>
         </Link>
         <div>
-          <img width={100} height={100} src={pencil} alt="alt"/>
+          <img width={150} src={ios} alt="alt"/>
         </div>
       </div>
     </div>

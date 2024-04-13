@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTransition } from 'react-transition-state';
-import Header from '../header';
 
 const Unit1 = () => {
   const [units, setUnits] = useState([]);
@@ -31,8 +30,7 @@ const Unit1 = () => {
   }, []);
 
   return (
-    <div className='container'>
-    <Header/>
+    <div>
     <div className='font-semibold text-2xl mb-3'>LEARN ENGLISH WITHOUT LIMITS</div>
     <div>Search</div>
       {!selectedUnit && units.map(unit => (
