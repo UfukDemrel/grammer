@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import chat from "../chat.svg";
+import grammer from "../images/grammer.png";
 import { Link } from "react-router-dom";
 
 function Header() {
@@ -10,11 +10,11 @@ function Header() {
   }, [theme]);
 
   return (
-    <div className="flex items-center justify-between mb-3 mt-3">
+    <div className="flex items-center justify-between mb-2 mt-2">
       <Link to="/">
         <div className="flex items-center gap-1">
-          <img src={chat} alt="alt" />
-          <div className="font-semibold text-xl">English Lessons</div>
+        <img width={35} height={35} src={grammer} alt="alt" />
+        {/* <div className="font-semibold text-xl">English Lessons</div> */}
         </div>
       </Link>
 
@@ -25,9 +25,9 @@ function Header() {
         }
       >
         {theme === "light" ? (
-          <img src="https://cliply.co/wp-content/uploads/2021/02/392102850_EARTH_EMOJI_400px.gif" alt="alt"/>
+          <img className="cursor-pointer" width={50} height={50} src="https://cliply.co/wp-content/uploads/2021/02/392102850_EARTH_EMOJI_400px.gif" alt="alt"/>
         ) : (
-          <img src="https://static.wixstatic.com/media/892357_354f20bfd3344dca825587e14758ddbc~mv2.gif" alt="alt"/>
+          <img className="cursor-pointer" width={50} height={50} src="https://static.wixstatic.com/media/892357_354f20bfd3344dca825587e14758ddbc~mv2.gif" alt="alt"/>
         )}
       </div>
     </div>

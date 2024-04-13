@@ -4,12 +4,15 @@ import { useTransition } from 'react-transition-state';
 
 const Unit1 = () => {
   const [units, setUnits] = useState([]);
-  const [blocks, setBlocks] = useState(false);
+  const [blocks, setBlocks] = useState({}); // Objeye dönüştürüldü
   const [selectedUnit] = useState(null);
   const [state, toggle] = useTransition({ timeout: 500, preEnter: true });
 
-  const handleBlocks = () => {
-    setBlocks(prevBlocks => !prevBlocks);
+  const handleBlocks = (unitId) => {
+    setBlocks(prevBlocks => ({
+      ...prevBlocks,
+      [unitId]: !prevBlocks[unitId], // İlgili menüyü açıp kapat
+    }));
   }
 
   useEffect(() => {
@@ -29,30 +32,29 @@ const Unit1 = () => {
   return (
     <div>
       {!selectedUnit && units.map(unit => (
-        <div onClick={() => toggle()} className='mb-3' key={unit.id}>
-          <div className='flex justify-between items-center mt-3' onClick={handleBlocks}>
+        <div onClick={() => toggle()} className='mb-3 shad rounded-lg p-2 cursor-pointer' key={unit.id}>
+          <div className='flex justify-between items-center' onClick={() => handleBlocks(unit.id)}>
             <div className='flex gap-2 items-center'>
-              <img className='w-1/6' src={unit.icons.svg0} alt="Icon" />
+              <img width={50} height={50} src={unit.icons.svg0} alt="Icon" />
               <div className='block'>
                 <h2 className='font-semibold'>{unit.title}</h2>
                 <p className='text-sm font-medium'>{unit.content}</p>
               </div>
             </div>
-            <img src={unit.icons.svg2} alt='icon'/>          
+            <img width={40} height={40} src={unit.icons.svg2} alt='icon'/>          
           </div>
           
-          {blocks && unit.lessons && unit.lessons.map(lesson => (
+          {blocks[unit.id] && unit.lessons && unit.lessons.map(lesson => (
             <div key={lesson.id} className={`mt-1 example ${state.status}`}>
-              <Link to={`/details/${lesson.id}`} className='flex items-center gap-2 hover:bg-gray-200 rounded-md p-1'>
+              <Link to={`/details/${lesson.id}`} className='flex items-center gap-2 hover:bg-gray-400 rounded-md p-1'>
                 <img className='w-1/6' src={lesson.icons} alt='icons'/>
                 <div className='block'>
-                  <div className='text-sm font-medium spa text-slate-700'>{lesson.title}</div>
+                  <div className='text-sm font-medium'>{lesson.title}</div>
                   <p className='text-sm font-semibold'>{lesson.content}</p>
                 </div>
               </Link>
             </div>
           ))}
-          <hr className='mt-1'/>
         </div>
       ))}
     </div>
