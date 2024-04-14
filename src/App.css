@@ -13,7 +13,7 @@ body.dark{
 }
 
 body{
-  font-family: 'SF Pro Display', sans-serif;
+  font-family: "Poppins", sans-serif;
   /* transition: background-color 0.5s, left 0.5s; */
   transition-delay: 0s, 1s;
   transition-timing-function: ease-in, ease-in-out;
@@ -33,6 +33,43 @@ body.light .svg{
 
 body.dark .svg{
   fill: white;
+}
+
+.floating:hover {
+  animation-name: floating;
+  -webkit-animation-name: floating;
+  animation-duration: 1.0s;
+  -webkit-animation-duration: 1.0s;
+  animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0%);
+  }
+  50% {
+    transform: translateY(10%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@-webkit-keyframes floating {
+  0% {
+    -webkit-transform: translateY(0%);
+  }
+  50% {
+    -webkit-transform: translateY(10%);
+  }
+  100% {
+    -webkit-transform: translateY(0%);
+  }
+}
+
+.w45{
+  width: 48%;
 }
 
 .example {

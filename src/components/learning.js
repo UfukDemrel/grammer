@@ -18,22 +18,45 @@ function Learning() {
         />
         <img width={70} height={70} className="" src={blue} alt="alt" />
       </div> */}
-      <div className="w-3/5 font-black text-2xl">
-        LEARN ENGLISH FROM ANYTHING AND ANYWHERE
+      <div>Hi Good Human!</div>
+      <div className="font-black text-2xl mb-2">
+        WELCOME BACK
       </div>
-      <div className="flex justify-end items-end">
+      {/* <div className="flex justify-end items-end">
         <img width={70} height={70} className="mr-5" src={red} alt="alt" />
+      </div> */}
+      <div className="flex justify-between items-center mb-4">
+        <img src="https://ouch-cdn2.icons8.com/gwT82aWj2SbEIs_Dq49OSQpFTLZkA5IF32b24vj9tBQ/rs:fit:368:453/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTg5/L2FjMDQ3MGJlLTcz/ZTAtNGIwYi1iYWNi/LTFkYWMyMDgzOTRj/Ny5wbmc.png" alt="alt" />
       </div>
-      <div className="font-medium w-2/3 mt-8 mb-2 ml-3">
-        You can now improve your English everywhere, learn your grammar and
-        start talking to people.
+
+      <div className="font-semibold text-md mt-2 mb-2">
+        Grammer learning english easy with 
       </div>
-      <div className="flex justify-between items-center">
-        <img  className="" src={work} alt="alt" />
+
+      <div className="flex justify-between gap-2 flex-wrap mt-3 mb-3">
+        <div className="floating shadow bg-emerald-500 w45 p-1 rounded-2xl">
+        <div className="flex items-center justify-center">
+          <img src="https://ouch-cdn2.icons8.com/SrWPfVkjBJ4nYcntOpYj6g4qef9AfpLxjaVd5vcjCA8/rs:fit:368:366/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTQ5/LzBjODUxZWVhLWI2/M2UtNGYwMS05OWE0/LWE2ZGRhOTNmOGJi/Mi5wbmc.png"/>
+        </div>
+          <div className="font-semibold text-md p-1">Learning</div>
+        </div>
+        <div className="floating shadow bg-yellow-500 w45 p-1 rounded-2xl">
+          <img src="https://ouch-cdn2.icons8.com/kpQfY18Cw396in5JdjyeOGwuV0Bn4XMtjmsGdIE14Zk/rs:fit:368:467/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNTg1/LzMwMmIxM2RmLTU3/ZTItNDU3ZC05ODc5/LTYxM2ZhYjMxMmIx/MS5wbmc.png"/>
+          <div className="font-semibold text-md p-1">Speech</div>
+        </div>
+        <div className="floating shadow bg-orange-500 w45 p-1 rounded-2xl">
+          <img src="https://ouch-cdn2.icons8.com/xcVKGIHP42ikMePpCdYEfFFfD0bTeTKzhHn-BXRIX4k/rs:fit:368:334/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNTUv/YWUwMTdhODMtYmMy/ZC00NGY4LWIzNDYt/ZTczMTk0NjYyMTNm/LnBuZw.png"/>
+          <div className="font-semibold text-md p-1">Research</div>
+        </div>
+        <div className="floating shadow bg-slate-500 w45 p-1 rounded-2xl">
+          <img src="https://ouch-cdn2.icons8.com/yGDCO3Alcr_ZqecmQxSXIo1Lpx3xm0kqj_Q7VvNRaVs/rs:fit:368:381/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMzE2/L2YwZGQ1NzQyLTdi/NzMtNGMzOC1iOWYx/LTk0MzcyMDE5MTNh/ZS5wbmc.png"/>
+          <div className="font-semibold text-md p-1">Victory</div>
+        </div>
       </div>
-      <div className="flex justify-between items-center">
+
+      <div className="mb-3 mt-4 w-full">
         <Link to="/learning">
-          <div className="shadow flex items-center justify-center bg-blue-600 pl-5 pr-5 pt-3 pb-3 mt-5 rounded-full gap-3">
+          <div className="shadow w-full flex items-center justify-center bg-rose-700 pl-5 pr-5 pt-3 pb-3 rounded-full gap-3">
             <div className="font-semibold text-sm">Get Starded</div>
             <svg
               className="svg"
@@ -57,9 +80,6 @@ function Learning() {
             </svg>
           </div>
         </Link>
-        <div>
-          <img width={150} src={ios} alt="alt"/>
-        </div>
       </div>
     </div>
   );
