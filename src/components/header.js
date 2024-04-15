@@ -14,23 +14,30 @@ function Header() {
     <div className="flex items-center justify-between mb-3 mt-3">
       <Link to="/">
         <div className="flex items-center gap-1">
-          {theme === "light" ? (
+          <img
+            className=""
+            width={40}
+            height={40}
+            src="https://cdn3d.iconscout.com/3d/free/thumb/free-figma-9234652-7516877.png?f=webp"
+            alt="alt"
+          />
+          {/* {theme === "light" ? (
             <img
-              className="rounded-md bg-black p-1 border-2 border-black"
+              className=""
               width={40}
               height={40}
-              src="https://cdn-icons-png.flaticon.com/256/5968/5968705.png"
+              src="https://cdn3d.iconscout.com/3d/free/thumb/free-figma-9234652-7516877.png?f=webp"
               alt="alt"
             />
           ) : (
-            <img
-              className="rounded-md bg-white p-1 border-2 border-white"
+               <img
+              className=""
               width={40}
               height={40}
-              src="https://cdn-icons-png.flaticon.com/256/5968/5968705.png"
+              src="https://cdn3d.iconscout.com/3d/free/thumb/free-figma-9234652-7516877.png?f=webp"
               alt="alt"
             />
-          )}
+          )} */}
         </div>
       </Link>
 
@@ -41,9 +48,9 @@ function Header() {
         }
       >
         {theme === "light" ? (
-          <img className=" w-1/12" src={sun} alt="sun"/>
+          <img className=" w-1/12" src={sun} alt="sun" />
         ) : (
-          <img className=" w-1/12" src={moon} alt="sun"/>
+          <img className=" w-1/12" src={moon} alt="sun" />
         )}
       </div>
     </div>
