@@ -84,3 +84,55 @@ body.dark .svg{
 .example.exited {
   display: none;
 }
+
+.slider-container {
+  max-width: 800px; /* İstediğiniz genişlikte ayarlayabilirsiniz */
+  margin: 0 auto; /* Ortalıyor */
+}
+
+.slider {
+  width: 100%;
+}
+
+.slider img {
+  width: 100%;
+  height: auto;
+}
+
+.slick-dots {
+  list-style: none !important;
+  display: flex !important;
+  bottom: -15px !important;
+  justify-content: center;
+  margin-top: 20px; 
+}
+
+.slick-dots li {
+  background-color: gray;
+  width: 35px !important;
+  height: 6px !important;
+  border-radius: 99px;
+  list-style: none;
+}
+
+.slick-dots li.slick-active{
+  background-color: #fff;
+  width: 35px;
+  height: 0px;
+  border-radius: 99px;
+  list-style: none;
+}
+
+.slick-dots li button {
+  background-color: #ccc;
+  border: none;
+  width: 10px;
+  height: 5px;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.slick-dots li button:before{
+  font-family: '' !important;
+  font-size: 0px !important;
+}
