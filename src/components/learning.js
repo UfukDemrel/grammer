@@ -1,23 +1,14 @@
 import React from "react";
 // import blue from "../images/blue.png";
-import red from "../images/red.png";
-import work from "../images/work.png";
-import ios from "../images/ios.png";
+import learning from "../images/learning.png";
+import speech from "../images/speech.png";
+import research from "../images/research.png";
+import victory from "../images/victory.png";
 import { Link } from "react-router-dom";
 
 function Learning() {
   return (
     <div>
-      {/* <div className="flex justify-between items-center">
-        <img
-          alt="alt"
-          className="rounded-md bg-white p-1 border-2 border-white"
-          width={40}
-          height={40}
-          src="https://cdn-icons-png.flaticon.com/256/5968/5968705.png"
-        />
-        <img width={70} height={70} className="" src={blue} alt="alt" />
-      </div> */}
       <div>Hi Good Human!</div>
       <div className="font-black text-2xl mb-2">
         WELCOME BACK
@@ -36,20 +27,20 @@ function Learning() {
       <div className="flex justify-between gap-2 flex-wrap mt-3 mb-3">
         <div className="floating shadow bg-emerald-500 w45 p-1 rounded-2xl">
         <div className="flex items-center justify-center">
-          <img src="https://ouch-cdn2.icons8.com/SrWPfVkjBJ4nYcntOpYj6g4qef9AfpLxjaVd5vcjCA8/rs:fit:368:366/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTQ5/LzBjODUxZWVhLWI2/M2UtNGYwMS05OWE0/LWE2ZGRhOTNmOGJi/Mi5wbmc.png"/>
+          <img src={learning} alt="alt"/>
         </div>
           <div className="font-semibold text-md p-1">Learning</div>
         </div>
-        <div className="floating shadow bg-yellow-500 w45 p-1 rounded-2xl">
-          <img src="https://ouch-cdn2.icons8.com/kpQfY18Cw396in5JdjyeOGwuV0Bn4XMtjmsGdIE14Zk/rs:fit:368:467/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNTg1/LzMwMmIxM2RmLTU3/ZTItNDU3ZC05ODc5/LTYxM2ZhYjMxMmIx/MS5wbmc.png"/>
+        <div className="floating shadow bg-orange-500 w45 p-1 rounded-2xl">
+          <img src={speech} alt="alt"/>
           <div className="font-semibold text-md p-1">Speech</div>
         </div>
-        <div className="floating shadow bg-orange-500 w45 p-1 rounded-2xl">
-          <img src="https://ouch-cdn2.icons8.com/xcVKGIHP42ikMePpCdYEfFFfD0bTeTKzhHn-BXRIX4k/rs:fit:368:334/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNTUv/YWUwMTdhODMtYmMy/ZC00NGY4LWIzNDYt/ZTczMTk0NjYyMTNm/LnBuZw.png"/>
+        <div className="floating shadow bg-gray-500 w45 p-1 rounded-2xl">
+          <img src={research} alt="alt"/>
           <div className="font-semibold text-md p-1">Research</div>
         </div>
-        <div className="floating shadow bg-slate-500 w45 p-1 rounded-2xl">
-          <img src="https://ouch-cdn2.icons8.com/yGDCO3Alcr_ZqecmQxSXIo1Lpx3xm0kqj_Q7VvNRaVs/rs:fit:368:381/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMzE2/L2YwZGQ1NzQyLTdi/NzMtNGMzOC1iOWYx/LTk0MzcyMDE5MTNh/ZS5wbmc.png"/>
+        <div className="floating shadow bg-red-500 w45 p-1 rounded-2xl">
+          <img src={victory} alt="alt"/>
           <div className="font-semibold text-md p-1">Victory</div>
         </div>
       </div>
