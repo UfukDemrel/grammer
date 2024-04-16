@@ -14,17 +14,16 @@ body.dark{
 
 body{
   font-family: "Poppins", sans-serif;
-  /* transition: background-color 0.5s, left 0.5s; */
   transition-delay: 0s, 1s;
-  transition-timing-function: ease-in, ease-in-out;
+  transition: all 0.5s;
 }
 
 body.light .shad{
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border: 1px solid rgb(212, 212, 212);
 }
 
 body.dark .shad{
-  box-shadow: rgb(255, 255, 255) 0px 0px 8px;
+  border: 1px solid rgb(212, 212, 212);
 }
 
 body.light .svg{
@@ -33,6 +32,14 @@ body.light .svg{
 
 body.dark .svg{
   fill: black;
+}
+
+body.light .arrow{
+  fill: black;
+}
+
+body.dark .arrow{
+  fill: white;
 }
 
 .floating:hover {
@@ -153,4 +160,22 @@ body.light .button{
 body.dark .button{
   background-color: white;
   color: black;
+}
+
+body.light input{
+  background-color: transparent;
+  color: black;
+}
+
+body.dark input{
+  background-color: transparent;
+  color: white;
+}
+
+#search-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 14px;
 }

@@ -4,7 +4,7 @@ import Unit from "./components/units/unit";
 import DetailsPage from "./details";
 import Header from "./components/header";
 import "./App.css";
-import Learning from "./components/learning";
+import Slider from "./components/slider";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={<Learning />} />
+          <Route path="/" element={<Slider />} />
           <Route path="/Learning" element={<Unit />} />
           <Route path="/details/:lessonId" element={<DetailsPage />} />
         </Routes>

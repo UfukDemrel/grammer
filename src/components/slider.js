@@ -17,8 +17,6 @@ const Slider = () => {
     $(sliderRef.current).slick({
       dots: true,
       arrows: false,
-      infinite: true,
-      speed: 500,
       slidesToShow: 3,
       slidesToScroll: 1,
       responsive: [
@@ -27,7 +25,6 @@ const Slider = () => {
           settings: {
             slidesToShow: 2,
             slidesToScroll: 1,
-            infinite: true,
             dots: true,
           },
         },
