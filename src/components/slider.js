@@ -68,7 +68,7 @@ const Slider = () => {
 
         <div className="p-1">
         <div className="font-bold text-xl">English Learning Tips</div>
-          <div className="mb-3 mt-4 w-full">
+          <div className="mb-3 mt-3 w-full">
           <div className="flex justify-between gap-2 flex-wrap mt-3 mb-3">
             <div className="floating shadow bg-orange-300 w45 p-1 rounded-2xl">
               <div className="flex items-center justify-center">
@@ -89,7 +89,7 @@ const Slider = () => {
               <div className="font-semibold text-md p-1">Victory</div>
             </div>
           </div> 
-          <div className="font-semibold text-md mt-2 mb-2 text-center">Learn English completely in one move</div>
+          <div className="font-semibold text-sm mt-3 mb-3 text-center">Learn English completely in one fell swoop and accelerate your career goals</div>
             <Link to="/learning">
               <div className="shadow w-full button flex items-center justify-center pl-5 pr-5 pt-3 pb-3 rounded-full gap-3 mt-2 mb-2">
                 <div className="font-semibold text-sm">Get Starded</div>

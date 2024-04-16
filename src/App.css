@@ -28,11 +28,11 @@ body.dark .shad{
 }
 
 body.light .svg{
-  fill: black;
+  fill: white;
 }
 
 body.dark .svg{
-  fill: white;
+  fill: black;
 }
 
 .floating:hover {
