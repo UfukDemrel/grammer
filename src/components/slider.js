@@ -3,6 +3,7 @@ import $ from "jquery";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.js";
+import three from "../images/three.png";
 import learning from "../images/learning.png";
 import speech from "../images/speech.png";
 import research from "../images/research.png";
@@ -14,8 +15,8 @@ const Slider = () => {
 
   useEffect(() => {
     $(sliderRef.current).slick({
-      dots: true, // Pagination eklemek için dots özelliğini true yapın
-      arrows: false, // Okları kaldırın
+      dots: true,
+      arrows: false,
       infinite: true,
       speed: 500,
       slidesToShow: 3,
@@ -46,46 +47,51 @@ const Slider = () => {
       <div ref={sliderRef} className="slider">
         <div className="p-1">
           <div>Hi Good Human!</div>
-          <div className="font-black text-2xl mb-2">WELCOME BACK</div>
+          <div className="font-bold text-2xl mb-2">WELCOME BACK</div>
           <div className="flex justify-between items-center mb-4">
             <img
-              src="https://ouch-cdn2.icons8.com/gwT82aWj2SbEIs_Dq49OSQpFTLZkA5IF32b24vj9tBQ/rs:fit:368:453/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMTg5/L2FjMDQ3MGJlLTcz/ZTAtNGIwYi1iYWNi/LTFkYWMyMDgzOTRj/Ny5wbmc.png"
+              src={three}
               alt="alt"
             />
           </div>
 
-          <div className="font-semibold text-md mt-2 mb-2">
-            Grammer learning english easy with
+          <div className="flex justify-center">
+            <div className="font-bold text-xl mt-2 mb-2 text-center w-4/5">
+              The world's most popular way to learn English
+            </div>
+          </div>
+          
+          <div className="font-semibold text-md mt-2 mb-2 text-center">
+            Whether you are a beginner or want to practice reading, writing and speaking
           </div>
         </div>
 
         <div className="p-1">
+        <div className="font-bold text-xl">English Learning Tips</div>
+          <div className="mb-3 mt-4 w-full">
           <div className="flex justify-between gap-2 flex-wrap mt-3 mb-3">
-            <div className="floating shadow bg-emerald-500 w45 p-1 rounded-2xl">
+            <div className="floating shadow bg-orange-300 w45 p-1 rounded-2xl">
               <div className="flex items-center justify-center">
                 <img src={learning} alt="alt" />
               </div>
               <div className="font-semibold text-md p-1">Learning</div>
             </div>
-            <div className="floating shadow bg-orange-500 w45 p-1 rounded-2xl">
-              <img src={speech} alt="alt" />
-              <div className="font-semibold text-md p-1">Speech</div>
-            </div>
-            <div className="floating shadow bg-gray-500 w45 p-1 rounded-2xl">
+            <div className="floating shadow bg-slate-300 w45 p-1 rounded-2xl">
               <img src={research} alt="alt" />
               <div className="font-semibold text-md p-1">Research</div>
             </div>
-            <div className="floating shadow bg-red-500 w45 p-1 rounded-2xl">
+            <div className="floating shadow bg-red-400 w45 p-1 rounded-2xl">
+              <img src={speech} alt="alt" />
+              <div className="font-semibold text-md p-1">Speech</div>
+            </div>
+            <div className="floating shadow bg-blue-300 w45 p-1 rounded-2xl">
               <img src={victory} alt="alt" />
               <div className="font-semibold text-md p-1">Victory</div>
             </div>
-          </div>
-        </div>
-
-        <div className="p-1">
-          <div className="mb-3 mt-4 w-full">
+          </div> 
+          <div className="font-semibold text-md mt-2 mb-2 text-center">Learn English completely in one move</div>
             <Link to="/learning">
-              <div className="shadow w-full flex items-center justify-center bg-rose-700 pl-5 pr-5 pt-3 pb-3 rounded-full gap-3">
+              <div className="shadow w-full button flex items-center justify-center pl-5 pr-5 pt-3 pb-3 rounded-full gap-3 mt-2 mb-2">
                 <div className="font-semibold text-sm">Get Starded</div>
                 <svg
                   className="svg"

@@ -4,7 +4,7 @@ import sun from "../images/sun.png";
 import moon from "../images/moon.png";
 
 function Header() {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
 
   useEffect(() => {
     document.body.className = theme;
@@ -14,13 +14,14 @@ function Header() {
     <div className="flex items-center justify-between mb-3 mt-3">
       <Link to="/">
         <div className="flex items-center gap-1">
-          <img
+          <div className="font-black text-lg">GRAMMER</div>
+          {/* <img
             className=""
             width={40}
             height={40}
             src="https://cdn3d.iconscout.com/3d/free/thumb/free-figma-9234652-7516877.png?f=webp"
             alt="alt"
-          />
+          /> */}
           {/* {theme === "light" ? (
             <img
               className=""
