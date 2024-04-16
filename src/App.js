@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Unit from "./components/units/unit";
-import DetailsPage from "./details";
+import DetailsPage from "./components/details";
 import Header from "./components/header";
 import "./App.css";
 import Slider from "./components/slider";
