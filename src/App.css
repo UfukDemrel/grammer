@@ -42,6 +42,14 @@ body.dark .arrow{
   fill: white;
 }
 
+body.light .search{
+  fill: rgb(151, 151, 151);
+}
+
+body.dark .search{
+  fill: rgb(151, 151, 151);
+}
+
 .floating:hover {
   animation-name: floating;
   -webkit-animation-name: floating;
@@ -174,7 +182,6 @@ body.dark input{
 
 #search-input {
   flex: 1;
-  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 10px;
   font-size: 14px;
