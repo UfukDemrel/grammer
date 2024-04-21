@@ -1,22 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useTransition } from "react-transition-state";
 import gray from '../../images/gray.png';
-import star from '../../images/star.png';
 
 const Unit1 = () => {
   const [units, setUnits] = useState([]);
   const [blocks, setBlocks] = useState({});
-  const [selectedUnit] = useState(null);
-  const [state, toggle] = useTransition({ timeout: 500, preEnter: true });
+  const [selectedUnit, setSelectedUnit] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
-
-  const handleBlocks = (unitId) => {
-    setBlocks((prevBlocks) => ({
-      ...prevBlocks,
-      [unitId]: !prevBlocks[unitId],
-    }));
-  };
+  const [completedLessons, setCompletedLessons] = useState(0);
+  const [filteredUnits, setFilteredUnits] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,9 +26,45 @@ const Unit1 = () => {
     fetchData();
   }, []);
 
-  const filteredUnits = units.filter((unit) =>
-    unit.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  useEffect(() => {
+    const countCompletedLessons = () => {
+      let count = 0;
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith("lesson_") && localStorage.getItem(key) === "completed") {
+          count++;
+        }
+      }
+      setCompletedLessons(count);
+    };
+
+    countCompletedLessons();
+  }, []);
+
+  useEffect(() => {
+    const filtered = units.filter((unit) =>
+      unit.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredUnits(filtered);
+  }, [units, searchTerm]);
+
+  const handleBlocks = (unitId) => {
+    setBlocks((prevBlocks) => {
+      const updatedBlocks = { ...prevBlocks };
+      Object.keys(updatedBlocks).forEach((key) => {
+        if (key !== unitId) {
+          updatedBlocks[key] = false;
+        }
+      });
+      updatedBlocks[unitId] = !prevBlocks[unitId];
+      return updatedBlocks;
+    });
+  };
+
+  const handleLessonClick = (lessonId) => {
+    localStorage.setItem(`lesson_${lessonId}`, "completed");
+    setCompletedLessons((prevCount) => prevCount + 1);
+  };
 
   return (
     <div>
@@ -49,7 +77,7 @@ const Unit1 = () => {
             src="https://img.icons8.com/emoji/48/fire.png"
             alt="fire"
           />
-          <div className="font-medium">{units.length}</div>
+          <div className="font-medium">{completedLessons}</div>
         </div>
       </div>
 
@@ -63,16 +91,6 @@ const Unit1 = () => {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 488.4 488.4"
         >
-          <g>
-            <g>
-              <path
-                d="M0,203.25c0,112.1,91.2,203.2,203.2,203.2c51.6,0,98.8-19.4,134.7-51.2l129.5,129.5c2.4,2.4,5.5,3.6,8.7,3.6
-			s6.3-1.2,8.7-3.6c4.8-4.8,4.8-12.5,0-17.3l-129.6-129.5c31.8-35.9,51.2-83,51.2-134.7c0-112.1-91.2-203.2-203.2-203.2
-			S0,91.15,0,203.25z M381.9,203.25c0,98.5-80.2,178.7-178.7,178.7s-178.7-80.2-178.7-178.7s80.2-178.7,178.7-178.7
-			S381.9,104.65,381.9,203.25z"
-              />
-            </g>
-          </g>
         </svg>
         <input
           className="pl-7 pb-2 pt-2 border border-gray-300 rounded-lg"
@@ -88,7 +106,6 @@ const Unit1 = () => {
         (filteredUnits.length > 0 ? (
           filteredUnits.map((unit) => (
             <div
-              onClick={() => toggle()}
               className="mb-3 shad rounded-xl p-2 cursor-pointer"
               key={unit.id}
             >
@@ -109,10 +126,11 @@ const Unit1 = () => {
               {blocks[unit.id] &&
                 unit.lessons &&
                 unit.lessons.map((lesson) => (
-                  <div key={lesson.id} className={`mt-1 example ${state.status}`}>
+                  <div key={lesson.id} className="mt-1">
                     <Link
                       to={`/details/${lesson.id}`}
                       className="flex items-center gap-2 hover:bg-gray-400 rounded-xl p-1"
+                      onClick={() => handleLessonClick(lesson.id)}
                     >
                       <img className="w-1/6" src={lesson.icons} alt="icons" />
                       <div className="block">

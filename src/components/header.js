@@ -15,30 +15,6 @@ function Header() {
       <Link to="/">
         <div className="flex items-center gap-1">
           <div className="font-black text-lg">GRAMMER</div>
-          {/* <img
-            className=""
-            width={40}
-            height={40}
-            src="https://cdn3d.iconscout.com/3d/free/thumb/free-figma-9234652-7516877.png?f=webp"
-            alt="alt"
-          /> */}
-          {/* {theme === "light" ? (
-            <img
-              className=""
-              width={40}
-              height={40}
-              src="https://cdn3d.iconscout.com/3d/free/thumb/free-figma-9234652-7516877.png?f=webp"
-              alt="alt"
-            />
-          ) : (
-               <img
-              className=""
-              width={40}
-              height={40}
-              src="https://cdn3d.iconscout.com/3d/free/thumb/free-figma-9234652-7516877.png?f=webp"
-              alt="alt"
-            />
-          )} */}
         </div>
       </Link>
 

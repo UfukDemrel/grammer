@@ -67,21 +67,21 @@ const Slider = () => {
         <div className="font-bold text-xl">English Learning Tips</div>
           <div className="mb-3 mt-3 w-full">
           <div className="flex justify-between gap-2 flex-wrap mt-3 mb-3">
-            <div className="floating shadow bg-orange-300 w45 p-1 rounded-2xl">
+            <div className="floating shadow bg-orange-500 w45 p-1 rounded-2xl">
               <div className="flex items-center justify-center">
                 <img src={learning} alt="alt" />
               </div>
               <div className="font-semibold text-md p-1">Learning</div>
             </div>
-            <div className="floating shadow bg-slate-300 w45 p-1 rounded-2xl">
+            <div className="floating shadow bg-slate-500 w45 p-1 rounded-2xl">
               <img src={research} alt="alt" />
               <div className="font-semibold text-md p-1">Research</div>
             </div>
-            <div className="floating shadow bg-red-400 w45 p-1 rounded-2xl">
+            <div className="floating shadow bg-red-500 w45 p-1 rounded-2xl">
               <img src={speech} alt="alt" />
               <div className="font-semibold text-md p-1">Speech</div>
             </div>
-            <div className="floating shadow bg-blue-300 w45 p-1 rounded-2xl">
+            <div className="floating shadow bg-blue-500 w45 p-1 rounded-2xl">
               <img src={victory} alt="alt" />
               <div className="font-semibold text-md p-1">Victory</div>
             </div>
