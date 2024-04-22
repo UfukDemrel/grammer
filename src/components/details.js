@@ -7,6 +7,7 @@ const DetailsPage = () => {
   const [showSecondText, setShowSecondText] = useState(false);
   const [userAnswerText1, setUserAnswerText1] = useState("");
   const [userAnswerText2, setUserAnswerText2] = useState("");
+  const [isRed, setIsRed] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,6 +50,17 @@ const DetailsPage = () => {
         setShowSecondText(true);
         startRecognition(textType);
       };
+  
+      const blinkInterval = 500;
+      const blinkIntervalId = setInterval(() => {
+        setIsRed((prevState) => !prevState);
+      }, blinkInterval);
+  
+      recognition.onend = () => {
+        clearInterval(blinkIntervalId);
+        setIsRed(false);
+      };
+  
       recognition.start();
     } catch (error) {
       console.error("Error starting recognition:", error);
@@ -99,37 +111,49 @@ const DetailsPage = () => {
           </svg>
         </div>
       </Link>
-      <div className="">
-        <div className="bg-slate-500 p-2 font-medium text-center w-max rounded-md shadow-md mb-2">
+      <div>
+        <div className="bg-green-200 text-black p-2 font-medium text-center text-xs w-max rounded-lg shadow-md mb-2">
           {text1}
         </div>
         {!showSecondText && (
-          <button
-            className="flex justify-center mt-2"
-            onClick={() => handleButtonClick("text1")}
-          >
-            <img width="45" height="45" src="https://img.icons8.com/3d-fluency/94/microphone.png" alt="microphone"/>
-          </button>
+          <>
+            <div className="flex justify-center mt-2 border-2 fixed bottom-0 rounded-t-xl text-center w-full p-4 m-0 right-0 shadow items-center">
+              <button className="flex" onClick={() => handleButtonClick("text1")}>
+              <div onClick={() => setIsRed(!isRed)}>
+                {isRed ? <div className="red"></div> : ''}
+              </div>
+              <svg width="2.5rem" height="2.5rem" viewBox="0 0 1024 1024" className="icon"  version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M698.624 501.376a170.112 170.112 0 0 1-170.112 170.112h-58.496a170.112 170.112 0 0 1-170.112-170.112V250.048a170.048 170.048 0 0 1 170.112-170.112h58.496a170.112 170.112 0 0 1 170.112 170.112v251.328z" fill="#979FCB" /><path d="M725.76 410.624v104.512c0 104.448-87.68 189.12-195.904 189.12H462.464c-108.224 0-195.968-84.672-195.968-189.12V410.624h-31.808v123.904c0 118.912 99.904 215.296 223.04 215.296h76.736c123.264 0 223.104-96.384 223.104-215.296V410.624h-31.808z" fill="#394B97" /><path d="M453.184 719.104h92.16v162.944h-92.16z" fill="#394B97" /><path d="M734.656 944v-12.224c0-40.896-38.976-74.048-87.232-74.048h-296.32c-48.128 0-87.232 33.216-87.232 74.048v12.224h470.784z" fill="#394B97" /><path d="M520.896 225.088h174.464v41.152H520.896zM298.944 225.088h174.464v41.152H298.944zM520.896 297.536h174.464v41.152H520.896zM298.944 297.536h174.464v41.152H298.944zM520.896 375.68h174.464v41.216H520.896zM298.944 375.68h174.464v41.216H298.944zM520.896 448.256h174.464v41.088H520.896zM298.944 448.256h174.464v41.088H298.944z" fill="#5161A4" /></svg>
+              </button>
+            </div>
+          </>
         )}
         {showSecondText && (
           <div>
-            <div className="flex justify-end items-center">
-              <div className="bg-orange-600 w-max p-2 font-medium text-center rounded-md shadow-md mb-2">
-                {userAnswerText1}
+            {userAnswerText1 && (
+              <div className="flex justify-end items-center">
+                <div className="bg-orange-200 w-max p-2 font-medium text-left text-xs rounded-lg shadow-md mb-2 text-black">
+                  {userAnswerText1}
+                </div>
               </div>
-            </div>
-            <div className="bg-slate-500 p-2 font-medium text-center w-max rounded-md shadow-md mb-2">
+            )}
+            <div className="bg-green-200 p-2 font-medium text-left text-xs rounded-lg shadow-md mb-2 w-1/2 text-black">
               {text2}
             </div>
-            <button
-              className="flex justify-center mt-2"
-              onClick={() => handleButtonClick("text2")}
-            >
-              <img width="45" height="45" src="https://img.icons8.com/3d-fluency/94/microphone.png" alt="microphone"/>
-            </button>
-            <div className="flex justify-end items-center">
-              <div className="bg-orange-600 w-max p-2 font-medium text-center rounded-md shadow-md mb-2">{userAnswerText2}</div>
+            <div className="flex justify-center mt-2 border-2 fixed bottom-0 rounded-t-xl text-center w-full p-4 m-0 right-0 shadow items-center">
+              <button
+                className="flex justify-center mt-2"
+                onClick={() => handleButtonClick("text2")}
+              >
+                <svg width="2.5rem" height="2.5rem" viewBox="0 0 1024 1024" className="icon"  version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M698.624 501.376a170.112 170.112 0 0 1-170.112 170.112h-58.496a170.112 170.112 0 0 1-170.112-170.112V250.048a170.048 170.048 0 0 1 170.112-170.112h58.496a170.112 170.112 0 0 1 170.112 170.112v251.328z" fill="#979FCB" /><path d="M725.76 410.624v104.512c0 104.448-87.68 189.12-195.904 189.12H462.464c-108.224 0-195.968-84.672-195.968-189.12V410.624h-31.808v123.904c0 118.912 99.904 215.296 223.04 215.296h76.736c123.264 0 223.104-96.384 223.104-215.296V410.624h-31.808z" fill="#394B97" /><path d="M453.184 719.104h92.16v162.944h-92.16z" fill="#394B97" /><path d="M734.656 944v-12.224c0-40.896-38.976-74.048-87.232-74.048h-296.32c-48.128 0-87.232 33.216-87.232 74.048v12.224h470.784z" fill="#394B97" /><path d="M520.896 225.088h174.464v41.152H520.896zM298.944 225.088h174.464v41.152H298.944zM520.896 297.536h174.464v41.152H520.896zM298.944 297.536h174.464v41.152H298.944zM520.896 375.68h174.464v41.216H520.896zM298.944 375.68h174.464v41.216H298.944zM520.896 448.256h174.464v41.088H520.896zM298.944 448.256h174.464v41.088H298.944z" fill="#5161A4" /></svg>
+              </button>
             </div>
+            {userAnswerText2 && (
+              <div className="flex justify-end items-center">
+                <div className="bg-orange-200 w-max p-2 font-medium text-left text-xs rounded-lg shadow-md mb-2 text-black">
+                  {userAnswerText2}
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>

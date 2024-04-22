@@ -174,3 +174,14 @@ body.dark input{
   border-radius: 10px;
   font-size: 14px;
 }
+
+.red{
+    background: lime;
+    width: 13px;
+    height: 13px;
+    border-radius: 99px;
+    position: absolute;
+    margin-left: 20px;
+    transition: all 1s;
+    border: 2px solid white;
+}

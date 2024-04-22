@@ -16,7 +16,7 @@ const Slider = () => {
   useEffect(() => {
     $(sliderRef.current).slick({
       dots: true,
-      arrows: false,
+      infinite: false,
       slidesToShow: 3,
       slidesToScroll: 1,
       responsive: [
