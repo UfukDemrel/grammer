@@ -184,3 +184,11 @@ body.dark input{
     margin-left: 20px;
     border: 2px solid white;
 }
+
+.slick-prev{
+  display: none !important;
+}
+
+.slick-next{
+  display: none !important;
+}

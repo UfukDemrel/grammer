@@ -4,10 +4,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.js";
 import three from "../images/three.png";
-import learning from "../images/learning.png";
-import speech from "../images/speech.png";
-import research from "../images/research.png";
-import victory from "../images/victory.png";
+import work from "../images/work.png";
+// import learning from "../images/learning.png";
+// import speech from "../images/speech.png";
+// import research from "../images/research.png";
+// import victory from "../images/victory.png";
 import { Link } from "react-router-dom";
 
 const Slider = () => {
@@ -67,7 +68,12 @@ const Slider = () => {
         <div className="font-bold text-xl">English Learning Tips</div>
           <div className="mb-3 mt-3 w-full">
           <div className="flex justify-between gap-2 flex-wrap mt-3 mb-3">
-            <div className="floating shadow bg-orange-500 w45 p-1 rounded-2xl">
+          <div className="font-semibold text-sm mt-3 mb-3 text-center">Learn English grammar, pronunciation and all the tricks in a snap and accelerate your career goals day by day</div>
+            <div>
+              <img src={work} alt="alt" />
+              {/* <div className="font-semibold text-md p-1">Speech</div> */}
+            </div>
+            {/* <div className="floating shadow bg-orange-500 w45 p-1 rounded-2xl">
               <div className="flex items-center justify-center">
                 <img src={learning} alt="alt" />
               </div>
@@ -84,9 +90,8 @@ const Slider = () => {
             <div className="floating shadow bg-blue-500 w45 p-1 rounded-2xl">
               <img src={victory} alt="alt" />
               <div className="font-semibold text-md p-1">Victory</div>
-            </div>
+            </div> */}
           </div> 
-          <div className="font-semibold text-sm mt-3 mb-3 text-center">Learn English completely in one fell swoop and accelerate your career goals</div>
             <Link to="/learning">
               <div className="shadow w-full button flex items-center justify-center pl-5 pr-5 pt-3 pb-3 rounded-full gap-3 mt-2 mb-2">
                 <div className="font-semibold text-sm">Get Starded</div>
