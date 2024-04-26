@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import cupa from "../images/cupa.png";
 
 const DetailsPage = () => {
   const { lessonId } = useParams();
@@ -14,6 +15,7 @@ const DetailsPage = () => {
   const [showFourText, setshowFourText] = useState(false);
   const [showFiveText, setshowFiveText] = useState(false);
   const [isRed, setIsRed] = useState(false);
+  const [modals, setModals] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,15 +54,14 @@ const DetailsPage = () => {
           setUserAnswerText3(userVoiceInput);
           setshowFourText(true);
           localStorage.setItem(`${lessonId}-userAnswerText3`, userVoiceInput);
-        }
-        else if (textType === "text4") {
+        } else if (textType === "text4") {
           setUserAnswerText4(userVoiceInput);
           setshowFiveText(true);
           localStorage.setItem(`${lessonId}-userAnswerText4`, userVoiceInput);
-        }
-        else if (textType === "text5") {
+        } else if (textType === "text5") {
           setUserAnswerText5(userVoiceInput);
           localStorage.setItem(`${lessonId}-userAnswerText5`, userVoiceInput);
+          setModals(true);
         }
         setShowSecondText(true);
         startRecognition(textType);
@@ -109,7 +110,7 @@ const DetailsPage = () => {
 
   return (
     <div>
-      <Link to="/learning">
+      {/* <Link to="/learning">
         <div className="shadow p-2 rounded-xl border-2 w-9 flex justify-center items-center mb-3">
           <svg
             className="arrow"
@@ -125,16 +126,16 @@ const DetailsPage = () => {
             />
           </svg>
         </div>
-      </Link>
+      </Link> */}
       <div>
         <div className="bg-green-200 text-black p-2 font-medium text-center text-xs w-max rounded-lg shadow-md mb-2">
           {text1}
         </div>
         {!showSecondText && (
           <>
-            <div className="flex justify-center mt-2 border-2 fixed bottom-0 rounded-t-xl text-center w-full p-4 m-0 right-0 shadow items-center">
+            <div className="flex z-10 bg-white justify-center mt-2 border-2 fixed bottom-0 rounded-t-xl text-center w-full p-3 right-0 shadow-sm items-center">
               <button
-                className="flex"
+                className="flex justify-center mt-2"
                 onClick={() => handleButtonClick("text1")}
               >
                 <div onClick={() => setIsRed(!isRed)}>
@@ -186,7 +187,7 @@ const DetailsPage = () => {
             <div className="bg-green-200 p-2 font-medium text-left text-xs rounded-lg shadow-md mb-2 w-1/2 text-black">
               {text2}
             </div>
-            <div className="z-10 flex justify-center mt-2 border-2 fixed bottom-0 rounded-t-xl text-center w-full p-4 m-0 right-0 shadow items-center">
+            <div className="flex z-10 bg-white justify-center mt-2 border-2 fixed bottom-0 rounded-t-xl text-center w-full p-3 right-0 shadow-sm items-center">
               <button
                 className="flex justify-center mt-2"
                 onClick={() => handleButtonClick("text2")}
@@ -237,7 +238,7 @@ const DetailsPage = () => {
 
         {showThirdText && (
           <div>
-          <div className="bg-green-200 p-2 font-medium text-left text-xs rounded-lg shadow-md mb-2 w-1/2 text-black">
+            <div className="bg-green-200 p-2 font-medium text-left text-xs rounded-lg shadow-md mb-2 w-1/2 text-black">
               {text3}
             </div>
             {userAnswerText3 && (
@@ -247,7 +248,7 @@ const DetailsPage = () => {
                 </div>
               </div>
             )}
-            <div className="z-10 flex justify-center mt-2 border-2 fixed bottom-0 rounded-t-xl text-center w-full p-4 m-0 right-0 shadow items-center">
+            <div className="flex z-10 bg-white justify-center mt-2 border-2 fixed bottom-0 rounded-t-xl text-center w-full p-3 right-0 shadow-sm items-center">
               <button
                 className="flex justify-center mt-2"
                 onClick={() => handleButtonClick("text3")}
@@ -291,7 +292,7 @@ const DetailsPage = () => {
 
         {showFourText && (
           <div>
-          <div className="bg-green-200 p-2 font-medium text-left text-xs rounded-lg shadow-md mb-2 w-1/2 text-black">
+            <div className="bg-green-200 p-2 font-medium text-left text-xs rounded-lg shadow-md mb-2 w-1/2 text-black">
               {text4}
             </div>
             {userAnswerText4 && (
@@ -301,7 +302,7 @@ const DetailsPage = () => {
                 </div>
               </div>
             )}
-            <div className="z-10 flex justify-center mt-2 border-2 fixed bottom-0 rounded-t-xl text-center w-full p-4 m-0 right-0 shadow items-center">
+            <div className="flex z-10 bg-white justify-center mt-2 border-2 fixed bottom-0 rounded-t-xl text-center w-full p-3 right-0 shadow-sm items-center">
               <button
                 className="flex justify-center mt-2"
                 onClick={() => handleButtonClick("text4")}
@@ -345,17 +346,17 @@ const DetailsPage = () => {
 
         {showFiveText && (
           <div>
-          <div className="bg-green-200 p-2 font-medium text-left text-xs rounded-lg shadow-md mb-2 w-1/2 text-black">
+            <div className="bg-green-200 p-2 font-medium text-left text-xs rounded-lg shadow-md mb-2 w-1/2 text-black">
               {text5}
             </div>
             {userAnswerText5 && (
               <div className="flex justify-end items-center">
-                <div className="bg-orange-200 w-max p-2 font-medium text-left text-xs rounded-lg shadow-md mb-2 text-black">
+                <div className="bg-orange-200 w-max p-2 font-medium text-left text-xs rounded-lg shadow-md mb-24 text-black">
                   {userAnswerText5}
                 </div>
               </div>
             )}
-            <div className="flex z-10 bg-white justify-center mt-2 border-2 fixed bottom-0 rounded-t-xl text-center w-full p-4 m-0 right-0 shadow items-center">
+            <div className="flex z-10 bg-white justify-center mt-2 border-2 fixed bottom-0 rounded-t-xl text-center w-full p-3 right-0 shadow-sm items-center">
               <button
                 className="flex justify-center mt-2"
                 onClick={() => handleButtonClick("text5")}
@@ -397,6 +398,26 @@ const DetailsPage = () => {
           </div>
         )}
 
+        {modals && (
+          <div className="fixed inset-0 bg-gray-800 bg-opacity-50 z-50 flex justify-center items-center">
+            <div className="w-4/5 p-3 bg-white rounded-2xl">
+              <div className="flex justify-center">
+                <img className="w-28 h-28" src={cupa} alt="cupa" />
+              </div>
+              <div className="font-semibold text-center mb-2">Amazing!</div>
+              <div className=" font-normal mb-2 text-center">
+                Congratulations, you can move on to the next lesson.
+              </div>
+              <div className="flex justify-center items-center gap-2">
+                <Link to="/learning">
+                  <div className="shadow bg-black text-white pb-2 pt-2 pl-5 pr-5 rounded-xl border-2 flex justify-center items-center">
+                    Go Home
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
