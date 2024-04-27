@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import sun from "../images/sun.png";
 import moon from "../images/moon.png";
+import logo from "../images/logo.png";
 
 function Header() {
   const [theme, setTheme] = useState("light");
@@ -14,12 +15,12 @@ function Header() {
     <div className="flex items-center justify-between mb-3 mt-3">
       <Link to="/">
         <div className="flex items-center gap-1">
-          <div className="font-black text-lg">GRAMMER</div>
+          <div className="shadow rounded-2xl"><img width={45} src={logo} alt="logo"/></div>
         </div>
       </Link>
 
       <div
-        className="flex justify-end"
+        className="flex justify-end items-center"
         onClick={() =>
           setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"))
         }
