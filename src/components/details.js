@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import cupa from "../images/cupa.png";
+import bell from "../images/bell.png";
 
 const DetailsPage = () => {
   const { lessonId } = useParams();
@@ -16,6 +17,7 @@ const DetailsPage = () => {
   const [showFiveText, setshowFiveText] = useState(false);
   const [isRed, setIsRed] = useState(false);
   const [modals, setModals] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,41 +44,40 @@ const DetailsPage = () => {
       const recognition = new window.webkitSpeechRecognition();
       recognition.onresult = (event) => {
         const userVoiceInput = event.results[0][0].transcript;
+        if (userVoiceInput.match(/[ğüşıöç]/gi)) {
+          setShowPopup(true);
+          return;
+        }
         if (textType === "text1") {
           setUserAnswerText1(userVoiceInput);
-          localStorage.setItem(`${lessonId}-userAnswerText1`, userVoiceInput);
         } else if (textType === "text2") {
           setUserAnswerText2(userVoiceInput);
-          localStorage.setItem(`${lessonId}-userAnswerText2`, userVoiceInput);
           setShowThirdText(true);
           startRecognition("text3");
         } else if (textType === "text3") {
           setUserAnswerText3(userVoiceInput);
           setshowFourText(true);
-          localStorage.setItem(`${lessonId}-userAnswerText3`, userVoiceInput);
         } else if (textType === "text4") {
           setUserAnswerText4(userVoiceInput);
           setshowFiveText(true);
-          localStorage.setItem(`${lessonId}-userAnswerText4`, userVoiceInput);
         } else if (textType === "text5") {
           setUserAnswerText5(userVoiceInput);
-          localStorage.setItem(`${lessonId}-userAnswerText5`, userVoiceInput);
           setModals(true);
         }
         setShowSecondText(true);
         startRecognition(textType);
       };
-
+  
       const blinkInterval = 300;
       const blinkIntervalId = setInterval(() => {
         setIsRed((prevState) => !prevState);
       }, blinkInterval);
-
+  
       recognition.onend = () => {
         clearInterval(blinkIntervalId);
         setIsRed(false);
       };
-
+  
       recognition.start();
     } catch (error) {
       console.error("Error starting recognition:", error);
@@ -110,23 +111,6 @@ const DetailsPage = () => {
 
   return (
     <div>
-      {/* <Link to="/learning">
-        <div className="shadow p-2 rounded-xl border-2 w-9 flex justify-center items-center mb-3">
-          <svg
-            className="arrow"
-            width="1rem"
-            height="1rem"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M11.7071 4.29289C12.0976 4.68342 12.0976 5.31658 11.7071 5.70711L6.41421 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H6.41421L11.7071 18.2929C12.0976 18.6834 12.0976 19.3166 11.7071 19.7071C11.3166 20.0976 10.6834 20.0976 10.2929 19.7071L3.29289 12.7071C3.10536 12.5196 3 12.2652 3 12C3 11.7348 3.10536 11.4804 3.29289 11.2929L10.2929 4.29289C10.6834 3.90237 11.3166 3.90237 11.7071 4.29289Z"
-            />
-          </svg>
-        </div>
-      </Link> */}
       <div>
         <div className="bg-green-200 text-black p-2 font-medium text-center text-xs w-max rounded-lg shadow-md mb-2">
           {text1}
@@ -415,6 +399,26 @@ const DetailsPage = () => {
                   </div>
                 </Link>
               </div>
+            </div>
+          </div>
+        )}
+
+        {showPopup && (
+          <div className="fixed inset-0 bg-gray-800 bg-opacity-50 z-50 flex justify-center text-center items-center">
+            <div className="w-4/5 p-3 bg-white rounded-2xl">
+            <div onClick={() => setShowPopup(false)} className="flex justify-end items-center">
+              <svg width="1.5rem" height="1.5rem" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <g id="Menu / Close_MD">
+                <path id="Vector" d="M18 18L12 12M12 12L6 6M12 12L18 6M12 12L6 18" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </g>
+              </svg>
+            </div>
+            <div className="flex justify-center mb-2">
+                <img className="w-28" src={bell} alt="cupa" />
+              </div>
+            <div className="font-medium" onClose={() => setShowPopup(false)}>
+              Incorrect word detected! Please do not use Turkish letters.
+            </div>
             </div>
           </div>
         )}

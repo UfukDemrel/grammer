@@ -114,6 +114,7 @@ const Unit1 = () => {
             <div
               className="mb-3 shad rounded-xl p-2 cursor-pointer"
               key={unit.id}
+              id={unit.id}
             >
               <div
                 className="flex justify-between items-center"
@@ -132,7 +133,7 @@ const Unit1 = () => {
               {blocks[unit.id] &&
                 unit.lessons &&
                 unit.lessons.map((lesson) => (
-                  <div key={lesson.id} className="mt-1">
+                  <div key={lesson.id} id={lesson.id} className="mt-1">
                     <Link
                       to={`/details/${lesson.id}`}
                       className="flex items-center gap-2 hover:bg-gray-400 rounded-xl p-1"
